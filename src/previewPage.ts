@@ -73,6 +73,10 @@ function renderPreview(container: HTMLElement, html: string, urlSize: number): v
             <span>${formatBytes(urlSize)}</span>
           </span>
           <span class="stat">
+            <span class="stat-label">URL Length:</span>
+            <span>${window.location.href.length.toLocaleString()} chars</span>
+          </span>
+          <span class="stat">
             <span class="stat-label">Status:</span>
             <span class="status-ok">✓ Successfully decoded</span>
           </span>

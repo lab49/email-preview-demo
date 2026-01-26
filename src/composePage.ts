@@ -95,6 +95,10 @@ export function initComposePage(container: HTMLElement): void {
             <span class="stat-label">Compression:</span>
             <span id="compression-ratio">0%</span>
           </span>
+          <span class="stat">
+            <span class="stat-label">URL Length:</span>
+            <span id="url-length">0 chars</span>
+          </span>
           <span class="stat status-indicator" id="size-status">
             ✓ OK
           </span>
@@ -293,11 +297,17 @@ function updateStats(): void {
   const rawSizeEl = document.querySelector('#raw-size');
   const compressedSizeEl = document.querySelector('#compressed-size');
   const ratioEl = document.querySelector('#compression-ratio');
+  const urlLengthEl = document.querySelector('#url-length');
   const statusEl = document.querySelector('#size-status');
 
   if (rawSizeEl) rawSizeEl.textContent = formatBytes(result.rawSize);
   if (compressedSizeEl) compressedSizeEl.textContent = formatBytes(result.compressedSize);
   if (ratioEl) ratioEl.textContent = `${result.compressionRatio.toFixed(1)}% saved`;
+  
+  // Calculate full URL length (base URL + hash + encoded data)
+  const baseUrl = `${window.location.origin}${import.meta.env.BASE_URL}preview.html#`;
+  const fullUrlLength = baseUrl.length + (result.encodedData?.length || 0);
+  if (urlLengthEl) urlLengthEl.textContent = `${fullUrlLength.toLocaleString()} chars`;
   
   if (statusEl) {
     const status = getUrlSizeStatus(result.compressedSize);
