@@ -1,6 +1,10 @@
-// Simple hash-based router for /compose and /preview
+// Simple path-based router for /compose and /preview
+// Works with GitHub Pages static hosting
 
 export type Route = 'compose' | 'preview';
+
+// Get base path from Vite's import.meta.env or default
+const BASE_PATH = import.meta.env.BASE_URL || '/';
 
 export function getCurrentRoute(): Route {
   const path = window.location.pathname;
@@ -13,11 +17,11 @@ export function getCurrentRoute(): Route {
 }
 
 export function navigateToPreview(encodedData: string): void {
-  window.location.href = `/preview#${encodedData}`;
+  window.location.href = `${BASE_PATH}preview.html#${encodedData}`;
 }
 
 export function navigateToCompose(): void {
-  window.location.href = '/compose';
+  window.location.href = `${BASE_PATH}compose.html`;
 }
 
 export function getEncodedDataFromUrl(): string | null {
