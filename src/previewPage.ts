@@ -1,4 +1,4 @@
-import { getEncodedDataFromUrl, navigateToCompose } from './router';
+import { getEncodedDataFromUrl } from './router';
 import { decodeHtml, formatBytes } from './encoding';
 
 export function initPreviewPage(container: HTMLElement): void {
@@ -30,16 +30,10 @@ function renderError(container: HTMLElement, message: string): void {
         <div class="error-icon">⚠️</div>
         <h2>Unable to Load Preview</h2>
         <p>${message}</p>
-        <button type="button" id="back-btn" class="btn-primary">
-          ← Back to Compose
-        </button>
+        <p class="error-hint">Please close this tab and generate a new preview link from the compose page.</p>
       </div>
     </div>
   `;
-
-  document.querySelector('#back-btn')?.addEventListener('click', () => {
-    navigateToCompose();
-  });
 }
 
 function renderPreview(container: HTMLElement, html: string, urlSize: number): void {
@@ -84,11 +78,8 @@ function renderPreview(container: HTMLElement, html: string, urlSize: number): v
       </div>
       
       <div class="action-bar">
-        <button type="button" id="copy-url-btn" class="btn-secondary">
+        <button type="button" id="copy-url-btn" class="btn-primary">
           📋 Copy URL
-        </button>
-        <button type="button" id="back-btn" class="btn-primary">
-          ✏️ Back to Compose
         </button>
       </div>
     </div>
@@ -101,10 +92,6 @@ function renderPreview(container: HTMLElement, html: string, urlSize: number): v
   }
 
   // Set up button handlers
-  document.querySelector('#back-btn')?.addEventListener('click', () => {
-    navigateToCompose();
-  });
-
   document.querySelector('#copy-url-btn')?.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(window.location.href);

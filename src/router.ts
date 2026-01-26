@@ -17,7 +17,12 @@ export function getCurrentRoute(): Route {
 }
 
 export function navigateToPreview(encodedData: string): void {
-  window.location.href = `${BASE_PATH}preview.html#${encodedData}`;
+  const url = `${BASE_PATH}preview.html#${encodedData}`;
+  window.open(url, '_blank');
+}
+
+export function getPreviewUrl(encodedData: string): string {
+  return `${window.location.origin}${BASE_PATH}preview.html#${encodedData}`;
 }
 
 export function navigateToCompose(): void {
