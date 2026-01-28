@@ -2,8 +2,8 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  // Base path - use '/' since GitHub Pages deploys to root of the domain
-  base: '/',
+  // Base path for GitHub Pages deployment under /email-preview-demo/
+  base: '/email-preview-demo/',
   build: {
     rollupOptions: {
       input: {
