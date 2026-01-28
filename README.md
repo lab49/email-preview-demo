@@ -34,7 +34,7 @@ This application validates the feasibility of:
 
 ## 🚀 Try the Demo
 
-The application is deployed at: **[https://urban-adventure-kznemv7.pages.github.io/compose.html](https://urban-adventure-kznemv7.pages.github.io/compose.html)**
+The application is deployed at: **[https://lab49.github.io/email-preview-demo/compose.html](https://lab49.github.io/email-preview-demo/compose.html)**
 
 ### Using the Demo
 
